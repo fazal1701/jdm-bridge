@@ -359,9 +359,12 @@ export default function BrowseSellersPage() {
                       </div>
                       <div className="flex gap-2">
                         {seller.languages.map((lang) => (
-                          <span key={lang} title={lang.toUpperCase()}>
+                          <div key={lang} className="relative group">
                             <Globe className="w-4 h-4 text-blue-600" />
-                          </span>
+                            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-10">
+                              {lang.toUpperCase()}
+                            </span>
+                          </div>
                         ))}
                       </div>
                     </div>
