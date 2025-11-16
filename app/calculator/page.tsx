@@ -12,57 +12,76 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Calculator, DollarSign, Ship, FileText } from "lucide-react";
+import { Calculator, DollarSign, Ship, FileText, Shield, Clock, ArrowUp, CheckCircle2, X } from "lucide-react";
 import { formatCurrency } from "@/lib/formatting";
 import { calculateCost } from "@/lib/calculator";
 import type { CostBreakdown } from "@/lib/types";
 
 export default function CalculatorPage() {
-  const [vehiclePrice, setVehiclePrice] = useState(20000);
+  const [vehiclePrice, setVehiclePrice] = useState(50000);
+  const [vehicleYear, setVehicleYear] = useState(1999);
+  const [vehicleType, setVehicleType] = useState("sports");
   const [destination, setDestination] = useState<"usa" | "canada">("usa");
-  const [state, setState] = useState("wa");
+  const [originPort, setOriginPort] = useState("kobe");
+  const [destinationPort, setDestinationPort] = useState("seattle");
   const [usePool, setUsePool] = useState(true);
   const [poolCost, setPoolCost] = useState(1100);
+  const [dutyPercent, setDutyPercent] = useState(2.5);
 
   const breakdown = calculateCost({
     vehiclePrice,
     destination,
-    state,
+    state: "wa",
     usePool,
     poolCost,
   });
+
+  const jpPrice = vehiclePrice * 100; // Convert to JPY
+  const vehiclePriceUSD = vehiclePrice;
+  const exportFee = 600;
+  const oceanFreight = usePool ? poolCost : 1232;
+  const duty = vehiclePriceUSD * (dutyPercent / 100);
+  const docsPort = 350;
+  const totalEst = vehiclePriceUSD + exportFee + oceanFreight + duty + docsPort;
+
+  const isUSEligible = vehicleYear <= 1999;
+  const isCanadaEligible = vehicleYear <= 2009;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-24">
       {/* Hero */}
       <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-black mb-4 flex items-center gap-3">
-            <Calculator className="w-10 h-10" />
-            Cost Calculator
-          </h1>
-          <p className="text-xl text-blue-100">
-            Estimate the total cost of importing your dream JDM car
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <Calculator className="w-12 h-12" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black mb-4">Import Cost Calculator</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            Get an accurate estimate of your total import costs including shipping, duties, and
+            fees. See how much you can save with our quarterly shipping pools.
           </p>
         </div>
       </section>
 
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Input Form */}
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Vehicle & Shipping Details */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
             >
-              <Card className="border-2 border-gray-200 shadow-xl">
-                <CardHeader>
-                  <CardTitle className="text-2xl font-black">Vehicle Details</CardTitle>
+              <Card className="border-2 border-gray-200 shadow-lg h-full">
+                <CardHeader className="flex flex-row items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <DollarSign className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold">Vehicle & Shipping Details</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Vehicle Price (JPY)
+                      Vehicle Price (USD)
                     </label>
                     <Input
                       type="number"
@@ -70,9 +89,36 @@ export default function CalculatorPage() {
                       onChange={(e) => setVehiclePrice(parseFloat(e.target.value) || 0)}
                       className="h-12"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
-                      Enter the price in Japanese Yen
-                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Vehicle Year
+                    </label>
+                    <Input
+                      type="number"
+                      value={vehicleYear}
+                      onChange={(e) => setVehicleYear(parseInt(e.target.value) || 1999)}
+                      className="h-12"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Vehicle Type
+                    </label>
+                    <Select value={vehicleType} onValueChange={setVehicleType}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select vehicle type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="sports">Sports Car</SelectItem>
+                        <SelectItem value="classic">Classic Car</SelectItem>
+                        <SelectItem value="daily">Daily Driver</SelectItem>
+                        <SelectItem value="truck">Truck/Van</SelectItem>
+                        <SelectItem value="luxury">Luxury Vehicle</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>
@@ -87,93 +133,100 @@ export default function CalculatorPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="usa">United States</SelectItem>
-                        <SelectItem value="canada">Canada</SelectItem>
+                        <SelectItem value="usa">United States (25-year rule)</SelectItem>
+                        <SelectItem value="canada">Canada (15-year rule)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
-                  {destination === "usa" && (
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        State
-                      </label>
-                      <Select value={state} onValueChange={setState}>
-                        <SelectTrigger className="h-12">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="wa">Washington</SelectItem>
-                          <SelectItem value="ca">California</SelectItem>
-                          <SelectItem value="ny">New York</SelectItem>
-                          <SelectItem value="tx">Texas</SelectItem>
-                          <SelectItem value="fl">Florida</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  )}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Origin Port (Japan)
+                    </label>
+                    <Select value={originPort} onValueChange={setOriginPort}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select origin port" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="kobe">Kobe</SelectItem>
+                        <SelectItem value="yokohama">Yokohama</SelectItem>
+                        <SelectItem value="tokyo">Tokyo</SelectItem>
+                        <SelectItem value="osaka">Osaka</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
                   <div>
-                    <label className="flex items-center gap-2 mb-2">
-                      <input
-                        type="checkbox"
-                        checked={usePool}
-                        onChange={(e) => setUsePool(e.target.checked)}
-                        className="w-4 h-4"
-                      />
-                      <span className="text-sm font-semibold text-gray-700">
-                        Use Shipping Pool (Save $5,300)
-                      </span>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Destination Port
                     </label>
-                    {usePool && (
-                      <Input
-                        type="number"
-                        value={poolCost}
-                        onChange={(e) => setPoolCost(parseFloat(e.target.value) || 0)}
-                        className="h-12 mt-2"
-                        placeholder="Pool cost per vehicle"
-                      />
-                    )}
+                    <Select value={destinationPort} onValueChange={setDestinationPort}>
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select destination port" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="seattle">Seattle</SelectItem>
+                        <SelectItem value="losangeles">Los Angeles</SelectItem>
+                        <SelectItem value="vancouver">Vancouver</SelectItem>
+                        <SelectItem value="newyork">New York</SelectItem>
+                        <SelectItem value="toronto">Toronto</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
+
+                  <Button
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12"
+                    size="lg"
+                  >
+                    Calculate Import Costs
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
 
             {/* Cost Breakdown */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
             >
-              <Card className="border-2 border-blue-200 shadow-xl bg-gradient-to-br from-blue-50 to-white">
+              <Card className="border-2 border-blue-200 shadow-lg bg-gradient-to-br from-blue-50 to-white h-full">
                 <CardHeader>
                   <CardTitle className="text-2xl font-black flex items-center gap-2">
-                    <DollarSign className="w-6 h-6" />
+                    <Calculator className="w-6 h-6" />
                     Cost Breakdown
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <CostItem label="Vehicle Cost" value={breakdown.vehicleCost} />
-                    <CostItem label="Japan Export Fee" value={breakdown.japanExportFee} />
-                    <CostItem label="Shipping" value={breakdown.shipping} />
-                    <CostItem label="Port Fees" value={breakdown.portFees} />
-                    <CostItem label="Customs Brokerage" value={breakdown.customsBrokerage} />
-                    <CostItem label="Import Duty" value={breakdown.importDuty} />
-                    <CostItem label="Registration" value={breakdown.registration} />
-                    <CostItem label="Taxes" value={breakdown.taxes} />
+                    <CostItem label="Vehicle price" value={vehiclePriceUSD} />
+                    <CostItem label="Export fee" value={exportFee} />
+                    <CostItem label="Ocean freight" value={oceanFreight} />
+                    <div className="flex items-center gap-2">
+                      <label className="text-sm text-gray-700 flex-1">Duty %</label>
+                      <Input
+                        type="number"
+                        value={dutyPercent}
+                        onChange={(e) => setDutyPercent(parseFloat(e.target.value) || 2.5)}
+                        className="w-20 h-8 border-green-500"
+                        step="0.1"
+                      />
+                    </div>
+                    <CostItem label="Duty" value={duty} />
+                    <CostItem label="Docs/Port" value={docsPort} />
                   </div>
                   <div className="border-t-2 border-blue-300 pt-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-2xl font-black text-gray-900">Total</span>
+                      <span className="text-2xl font-black text-gray-900">Total (est.)</span>
                       <span className="text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                        {formatCurrency(breakdown.total)}
+                        {formatCurrency(totalEst)}
                       </span>
                     </div>
                   </div>
                   {usePool && (
                     <div className="mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
                       <p className="text-sm text-green-800">
-                        <strong>You&apos;re saving ${(6400 - breakdown.shipping).toLocaleString()}</strong> by
+                        <strong>You&apos;re saving {formatCurrency(breakdown.savingsVsLocal || 0)}</strong> by
                         using a shipping pool!
                       </p>
                     </div>
@@ -181,48 +234,118 @@ export default function CalculatorPage() {
                 </CardContent>
               </Card>
             </motion.div>
-          </div>
 
-          {/* Info Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {[
-              {
-                icon: Ship,
-                title: "Shipping Options",
-                description: "Choose between single shipment or join a pool to save",
-              },
-              {
-                icon: FileText,
-                title: "All Fees Included",
-                description: "Our calculator includes all import fees and taxes",
-              },
-              {
-                icon: DollarSign,
-                title: "Transparent Pricing",
-                description: "No hidden costs, see exactly what you'll pay",
-              },
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="border-2 border-gray-200 shadow-lg">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <Icon className="w-6 h-6 text-blue-600" />
+            {/* Right Column - Info Cards */}
+            <div className="space-y-6">
+              {/* Shipping Pools */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Card className="border-2 border-gray-200 shadow-lg">
+                  <CardHeader className="flex flex-row items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Ship className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-lg font-bold">Shipping Pools</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Our quarterly shipping pools consolidate multiple vehicles into shared
+                      containers, reducing costs by up to 60% compared to individual shipping.
+                    </p>
+                    <div className="space-y-2 text-sm">
+                      <div>
+                        <span className="text-gray-600">Next Departure:</span>{" "}
+                        <span className="font-semibold">March 15, 2024</span>
                       </div>
-                      <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-sm text-gray-600">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
+                      <div>
+                        <span className="text-gray-600">Available Spots:</span>{" "}
+                        <Badge className="bg-green-600 text-white ml-2">12 remaining</Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Import Eligibility */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Card className="border-2 border-gray-200 shadow-lg">
+                  <CardHeader className="flex flex-row items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-lg font-bold">Import Eligibility</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Vehicles must meet age requirements for legal import. We handle all compliance
+                      verification and documentation.
+                    </p>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center gap-2">
+                        {isUSEligible ? (
+                          <CheckCircle2 className="w-5 h-5 text-green-600" />
+                        ) : (
+                          <X className="w-5 h-5 text-red-600" />
+                        )}
+                        <span>
+                          <strong>US (25-year rule):</strong> {vehicleYear <= 1999 ? "Eligible" : "Not eligible"} (1999 and older)
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {isCanadaEligible ? (
+                          <CheckCircle2 className="w-5 h-5 text-green-600" />
+                        ) : (
+                          <X className="w-5 h-5 text-red-600" />
+                        )}
+                        <span>
+                          <strong>Canada (15-year rule):</strong> {vehicleYear <= 2009 ? "Eligible" : "Not eligible"} (2009 and older)
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Timeline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <Card className="border-2 border-gray-200 shadow-lg">
+                  <CardHeader className="flex flex-row items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <CardTitle className="text-lg font-bold">Timeline</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 mb-4">
+                      Complete import process typically takes 8-12 weeks from purchase to delivery,
+                      depending on shipping schedule and customs processing.
+                    </p>
+                    <div className="space-y-2 text-sm">
+                      <div>
+                        <span className="font-semibold">Purchase to Ship:</span> 2-4 weeks
+                      </div>
+                      <div>
+                        <span className="font-semibold">Ocean Transit:</span> 3-4 weeks
+                      </div>
+                      <div>
+                        <span className="font-semibold">Customs & Delivery:</span> 2-3 weeks
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

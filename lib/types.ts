@@ -21,7 +21,7 @@ export type OrderStatus =
 
 export type MilestoneStatus = "pending" | "in_progress" | "completed" | "failed";
 
-export type LanguageCode = "en" | "ja" | "es" | "fr" | "de";
+export type LanguageCode = "en" | "ja" | "es" | "fr" | "de" | "ko" | "zh" | "pt";
 
 export interface Vehicle {
   id: string;
@@ -55,11 +55,14 @@ export interface VehicleSummary {
   year: number;
   make: string;
   model: string;
+  trim?: string;
   mileage: number;
   condition: VehicleCondition;
   jpPrice: number;
   estimatedLandedCost: number;
   primaryImage: string;
+  location?: string;
+  features?: string[];
   seller: {
     id: string;
     name: string;
@@ -107,6 +110,11 @@ export interface AgentProfile {
   queueLength: number;
   avatar?: string;
   bio?: string;
+  location?: string;
+  since?: number; // year
+  successRate?: number; // percentage
+  typicalRange?: string;
+  avgSavings?: number;
 }
 
 export interface Auction {
@@ -120,20 +128,34 @@ export interface Auction {
   eligibleCountries: string[];
   endsAt: string;
   inspectionReportAvailable: boolean;
+  isHot?: boolean;
+  reserveMet?: boolean;
+  noReserve?: boolean;
 }
 
 export interface ShippingPool {
   id: string;
   name: string;
+  quarter?: string;
   departurePort: string;
   arrivalPort: string;
   departureDate: string;
   arrivalDate: string;
   capacity: number;
   filled: number;
+  teuReserved?: number;
+  teuCapacity?: number;
+  participants?: number;
   status: "open" | "filling" | "closed" | "in_transit" | "arrived";
   costPerVehicle: number;
   savingsVsSingle: number;
+  recentAdditions?: string[];
+  timeline?: {
+    inspection: number;
+    loading: number;
+    transit: number;
+    customs: number;
+  };
 }
 
 export interface CostBreakdown {
