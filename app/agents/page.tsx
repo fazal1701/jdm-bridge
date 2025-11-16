@@ -77,7 +77,7 @@ export default function AgentsPage() {
     new Set(mockAgents.flatMap((a) => a.specialties))
   ).sort();
   const allLocations = Array.from(
-    new Set(mockAgents.map((a) => a.location).filter(Boolean))
+    new Set(mockAgents.map((a) => a.location).filter((loc): loc is string => Boolean(loc)))
   ).sort();
 
   return (
@@ -198,7 +198,7 @@ export default function AgentsPage() {
             }
           >
             {filteredAgents.map((agent, index) => (
-              <AgentCard key={agent.id} agent={agent} index={index} viewMode={viewMode} />
+              <AgentCard key={agent.id} agent={agent} index={index} />
             ))}
           </div>
         </div>
@@ -260,11 +260,9 @@ export default function AgentsPage() {
 function AgentCard({
   agent,
   index,
-  viewMode,
 }: {
   agent: typeof mockAgents[0];
   index: number;
-  viewMode: "grid" | "detailed";
 }) {
   const formatResponseTime = (minutes: number) => {
     if (minutes < 120) return "< 2 hours";

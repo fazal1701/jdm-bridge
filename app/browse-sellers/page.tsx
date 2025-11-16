@@ -16,10 +16,8 @@ import {
   CheckCircle2,
   MessageSquare,
   Globe,
-  TrendingUp,
   Shield,
 } from "lucide-react";
-import { mockAgents } from "@/lib/mock-data";
 
 const mockSellers = [
   {
