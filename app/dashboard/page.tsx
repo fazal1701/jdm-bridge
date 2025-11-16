@@ -10,12 +10,7 @@ import {
   Package,
   Heart,
   ShoppingCart,
-  Clock,
-  CheckCircle2,
-  Truck,
   DollarSign,
-  TrendingUp,
-  MessageSquare,
 } from "lucide-react";
 import { useUser } from "@/contexts/user-context";
 import { mockVehicles } from "@/lib/mock-data";
@@ -76,7 +71,7 @@ export default function DashboardPage() {
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-2">
             Welcome back, {user.name}!
           </h1>
-          <p className="text-xl text-gray-600">Here's what's happening with your imports</p>
+          <p className="text-xl text-gray-600">Here&apos;s what&apos;s happening with your imports</p>
         </motion.div>
 
         {/* Stats Grid */}

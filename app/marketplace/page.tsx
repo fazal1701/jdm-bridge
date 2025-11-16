@@ -14,8 +14,6 @@ import {
   Heart,
   ShoppingCart,
   Star,
-  MapPin,
-  Calendar,
   Gauge,
 } from "lucide-react";
 import { mockVehicles } from "@/lib/mock-data";
@@ -25,11 +23,9 @@ import { formatCurrency, formatNumber } from "@/lib/formatting";
 export default function MarketplacePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMake, setSelectedMake] = useState<string | null>(null);
-  const [selectedCondition, setSelectedCondition] = useState<string | null>(null);
   const { addToFavorites, removeFromFavorites, addToCart, isFavorite, isInCart } = useUser();
 
   const makes = Array.from(new Set(mockVehicles.map((v) => v.make)));
-  const conditions = ["mint", "excellent", "good", "fair"];
 
   const filteredVehicles = mockVehicles.filter((vehicle) => {
     const matchesSearch =

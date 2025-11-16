@@ -22,7 +22,6 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import Image from "next/image";
 
 const navItems = [
   { href: "/marketplace", label: "Marketplace", icon: Car },

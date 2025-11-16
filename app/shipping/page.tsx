@@ -16,14 +16,9 @@ import {
 } from "@/components/ui/select";
 import {
   Ship,
-  MapPin,
-  Calendar,
   DollarSign,
-  Users,
-  TrendingUp,
   User,
   Package,
-  ArrowUp,
   CheckCircle2,
 } from "lucide-react";
 import { mockShippingPools } from "@/lib/mock-data-pools";

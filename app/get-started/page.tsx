@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, ArrowRight, Shield, Users, Zap, Globe } from "lucide-react";
+import { CheckCircle2, ArrowRight, Shield, Users, Globe } from "lucide-react";
 
 const steps = [
   {
@@ -57,7 +57,6 @@ const benefits = [
 ];
 
 export default function GetStartedPage() {
-  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
