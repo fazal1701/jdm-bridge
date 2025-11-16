@@ -65,6 +65,7 @@ export interface VehicleSummary {
     name: string;
     rating: number;
     reviewCount: number;
+    verified: boolean;
   };
   featured?: boolean;
 }
