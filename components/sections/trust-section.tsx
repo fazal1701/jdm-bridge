@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { formatCompactNumber } from "@/lib/utils";
 
 interface Stat {
   number: string;

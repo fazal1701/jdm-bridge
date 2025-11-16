@@ -1,6 +1,5 @@
 import type {
   VehicleSummary,
-  Seller,
   AgentProfile,
   Auction,
   ShippingPool,

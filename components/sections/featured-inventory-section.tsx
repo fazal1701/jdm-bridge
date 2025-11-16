@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/formatting";
 import { mockVehicles } from "@/lib/mock-data";
-import type { VehicleSummary } from "@/lib/types";
 
 export function FeaturedInventorySection() {
   const [activeIndex, setActiveIndex] = useState(0);

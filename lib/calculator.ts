@@ -36,8 +36,6 @@ export function calculateCost(inputs: CalculatorInputs): CostBreakdown {
     registration +
     taxes;
 
-  const savingsVsSingle = usePool ? 6400 - shipping : 0;
-
   return {
     vehicleCost: vehiclePrice,
     japanExportFee,

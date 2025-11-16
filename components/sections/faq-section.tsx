@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { mockFAQs } from "@/lib/mock-data";
-import type { FAQ } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 export function FAQSection() {
