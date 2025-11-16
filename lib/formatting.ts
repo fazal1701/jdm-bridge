@@ -80,6 +80,9 @@ export function formatLanguageCode(code: LanguageCode): string {
     es: "Spanish",
     fr: "French",
     de: "German",
+    ko: "Korean",
+    zh: "Chinese",
+    pt: "Portuguese",
   };
   return labels[code];
 }

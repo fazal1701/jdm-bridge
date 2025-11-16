@@ -24,8 +24,8 @@ import type { VehicleCondition } from "@/lib/types";
 export default function MarketplacePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMake, setSelectedMake] = useState<string | null>(null);
-  const [selectedCondition, _setSelectedCondition] = useState<VehicleCondition | null>(null);
-  // Note: _setSelectedCondition will be used when condition filter UI is implemented
+  const [selectedCondition] = useState<VehicleCondition | null>(null);
+  // Note: Condition filter setter will be added when condition filter UI is implemented
   const { addToFavorites, removeFromFavorites, addToCart, isFavorite, isInCart } = useUser();
 
   const makes = Array.from(new Set(mockVehicles.map((v) => v.make)));
