@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency } from "@/lib/formatting";
 import type { CostBreakdown } from "@/lib/types";
 
 export function CalculatorSection() {
