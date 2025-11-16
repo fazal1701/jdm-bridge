@@ -23,12 +23,20 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1f2937",
+          DEFAULT: "#3b82f6",
           foreground: "#ffffff",
         },
         accent: {
-          DEFAULT: "#dc2626",
+          DEFAULT: "#2563eb",
           foreground: "#ffffff",
+        },
+        jdm: {
+          blue: "#3b82f6",
+          "blue-dark": "#2563eb",
+          "blue-light": "#60a5fa",
+          white: "#ffffff",
+          "gray-light": "#f3f4f6",
+          "gray-dark": "#1f2937",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

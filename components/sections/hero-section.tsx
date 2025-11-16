@@ -36,7 +36,7 @@ export function HeroSection() {
         >
           Your Dream JDM
           <br />
-          <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
             Delivered
           </span>
         </motion.h1>
@@ -88,10 +88,10 @@ export function HeroSection() {
               </SelectContent>
             </Select>
             <Button
-              className="bg-red-600 hover:bg-red-700 col-span-2 md:col-span-1"
+              className="bg-blue-600 hover:bg-blue-700 col-span-2 md:col-span-1"
               asChild
             >
-              <Link href="/browse">Search</Link>
+              <Link href="/browse-sellers">Search</Link>
             </Button>
           </div>
           <p className="text-sm text-gray-400 mt-3">
@@ -108,10 +108,10 @@ export function HeroSection() {
         >
           <Button
             size="lg"
-            className="px-8 py-4 bg-red-600 hover:bg-red-700 text-lg"
+            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-lg shadow-lg"
             asChild
           >
-            <Link href="/browse">Browse Inventory</Link>
+            <Link href="/browse-sellers">Browse Inventory</Link>
           </Button>
           <Button
             size="lg"
@@ -119,7 +119,7 @@ export function HeroSection() {
             className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white border-white/30 text-lg"
             asChild
           >
-            <Link href="#how-it-works">How It Works</Link>
+            <Link href="/how-it-works">How It Works</Link>
           </Button>
         </motion.div>
       </div>

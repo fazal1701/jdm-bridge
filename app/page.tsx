@@ -9,7 +9,7 @@ import { NewsletterCTA } from "@/components/sections/newsletter-cta";
 
 export default function HomePage() {
   return (
-    <div className="bg-black">
+    <div className="bg-gradient-to-br from-blue-50 via-white to-blue-100">
       <HeroSection />
       <TrustSection />
       <FeaturesSection />
