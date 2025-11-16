@@ -50,7 +50,7 @@ export default function ShippingPage() {
     new Set(mockShippingPools.map((p) => p.arrivalPort))
   ).sort();
   const allQuarters = Array.from(
-    new Set(mockShippingPools.map((p) => p.quarter).filter(Boolean))
+    new Set(mockShippingPools.map((p) => p.quarter).filter((q): q is string => Boolean(q)))
   ).sort();
 
   return (
