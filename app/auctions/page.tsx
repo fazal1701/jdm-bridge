@@ -17,13 +17,10 @@ import {
 import {
   Clock,
   Gavel,
-  Users,
-  TrendingUp,
   Zap,
   Heart,
   MapPin,
   Gauge,
-  ArrowDown,
 } from "lucide-react";
 import { mockAuctions } from "@/lib/mock-data-auctions";
 import { formatCurrency } from "@/lib/formatting";

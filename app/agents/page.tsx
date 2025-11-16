@@ -19,18 +19,14 @@ import {
   Star,
   MessageSquare,
   Clock,
-  Globe,
   CheckCircle2,
   Search,
   Grid3x3,
   List,
   MapPin,
-  TrendingUp,
 } from "lucide-react";
 import { mockAgents } from "@/lib/mock-data";
 import { formatCurrency } from "@/lib/formatting";
-
-type ViewMode = "grid" | "detailed";
 
 const languageNames: Record<string, string> = {
   en: "English",
@@ -83,14 +79,6 @@ export default function AgentsPage() {
   const allLocations = Array.from(
     new Set(mockAgents.map((a) => a.location).filter(Boolean))
   ).sort();
-
-  const formatResponseTime = (minutes: number) => {
-    if (minutes < 60) return `< ${Math.ceil(minutes / 60)} hour`;
-    if (minutes < 120) return "< 2 hours";
-    if (minutes < 240) return "< 4 hours";
-    if (minutes < 360) return "< 6 hours";
-    return "> 6 hours";
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-24">

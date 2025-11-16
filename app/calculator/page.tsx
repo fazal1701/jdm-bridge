@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
@@ -12,10 +13,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Calculator, DollarSign, Ship, FileText, Shield, Clock, ArrowUp, CheckCircle2, X } from "lucide-react";
+import { Calculator, DollarSign, Ship, Shield, Clock, CheckCircle2, X } from "lucide-react";
 import { formatCurrency } from "@/lib/formatting";
 import { calculateCost } from "@/lib/calculator";
-import type { CostBreakdown } from "@/lib/types";
 
 export default function CalculatorPage() {
   const [vehiclePrice, setVehiclePrice] = useState(50000);
@@ -24,8 +24,8 @@ export default function CalculatorPage() {
   const [destination, setDestination] = useState<"usa" | "canada">("usa");
   const [originPort, setOriginPort] = useState("kobe");
   const [destinationPort, setDestinationPort] = useState("seattle");
-  const [usePool, setUsePool] = useState(true);
-  const [poolCost, setPoolCost] = useState(1100);
+  const [usePool] = useState(true);
+  const [poolCost] = useState(1100);
   const [dutyPercent, setDutyPercent] = useState(2.5);
 
   const breakdown = calculateCost({
@@ -35,8 +35,6 @@ export default function CalculatorPage() {
     usePool,
     poolCost,
   });
-
-  const jpPrice = vehiclePrice * 100; // Convert to JPY
   const vehiclePriceUSD = vehiclePrice;
   const exportFee = 600;
   const oceanFreight = usePool ? poolCost : 1232;
