@@ -81,7 +81,7 @@ export function CountdownTimer({
     return (
       <div className="text-center">
         {label && <p className="text-red-600 font-bold mb-2">{label}</p>}
-        <p className="text-gray-600 font-semibold">Time's Up!</p>
+        <p className="text-gray-600 font-semibold">Time&apos;s Up!</p>
       </div>
     );
   }
@@ -122,6 +122,7 @@ function TimeBox({
 }: {
   value: number;
   label: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   classes: any;
   showLabels: boolean;
 }) {

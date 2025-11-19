@@ -107,7 +107,7 @@ export default function ContactPage() {
           >
             <h1 className="text-5xl md:text-6xl font-black mb-6">Get in Touch</h1>
             <p className="text-xl md:text-2xl text-blue-100">
-              Have questions? We're here to help. Reach out and we'll get back to you as soon as possible.
+              Have questions? We&apos;re here to help. Reach out and we&apos;ll get back to you as soon as possible.
             </p>
           </motion.div>
         </div>
@@ -169,7 +169,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h2 className="text-2xl font-black text-gray-900">Send us a Message</h2>
-                      <p className="text-gray-600">We'll respond within 24 hours</p>
+                      <p className="text-gray-600">We&apos;ll respond within 24 hours</p>
                     </div>
                   </div>
 
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     <div className="text-center py-12">
                       <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto mb-4" />
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                      <p className="text-gray-600">We'll get back to you soon.</p>
+                      <p className="text-gray-600">We&apos;ll get back to you soon.</p>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">

@@ -140,10 +140,10 @@ export default function AboutPage() {
           >
             <Badge className="bg-white/20 text-white mb-6 px-4 py-1">About JDM Bridge</Badge>
             <h1 className="text-5xl md:text-6xl font-black mb-6">
-              Your Trusted Bridge to Japan's Finest
+              Your Trusted Bridge to Japan&apos;s Finest
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 leading-relaxed">
-              We're revolutionizing how enthusiasts worldwide import authentic Japanese Domestic Market vehicles.
+              We&apos;re revolutionizing how enthusiasts worldwide import authentic Japanese Domestic Market vehicles.
               Transparent, trusted, and built for the community.
             </p>
           </motion.div>
@@ -200,7 +200,7 @@ export default function AboutPage() {
                 We asked: <strong>Why should importing a car be this complicated?</strong>
               </p>
               <p>
-                In 2020, we set out to change that. Today, we've helped over 45,000 buyers import their dream cars
+                In 2020, we set out to change that. Today, we&apos;ve helped over 45,000 buyers import their dream cars
                 with complete transparency, verified sellers, and real-time tracking—all in one platform.
               </p>
             </div>

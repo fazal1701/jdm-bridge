@@ -9,10 +9,8 @@ import { cn } from "@/lib/utils";
 import { useUser } from "@/contexts/user-context";
 import {
   Search,
-  User,
   LogOut,
   ShoppingCart,
-  Heart,
   Menu,
   X,
   ArrowRight,
@@ -33,7 +31,6 @@ const navItems = [
 export function SiteHeader() {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const pathname = usePathname();

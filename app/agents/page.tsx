@@ -11,10 +11,8 @@ import {
   MessageSquare,
   Star,
   Clock,
-  CheckCircle2,
   Globe,
   TrendingUp,
-  DollarSign,
   MapPin,
 } from "lucide-react";
 import { mockAgents } from "@/lib/data";

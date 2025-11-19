@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { ArrowLeftRight, TrendingUp, TrendingDown } from "lucide-react";
+import { ArrowLeftRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -10,7 +9,6 @@ interface CurrencyConverterProps {
   initialAmount?: number;
   fromCurrency?: string;
   toCurrency?: string;
-  onConvert?: (amount: number, from: string, to: string) => void;
 }
 
 const currencies = [
@@ -41,14 +39,12 @@ export function CurrencyConverter({
   initialAmount = 0,
   fromCurrency = "JPY",
   toCurrency = "USD",
-  onConvert,
 }: CurrencyConverterProps) {
   const [amount, setAmount] = useState(initialAmount.toString());
   const [from, setFrom] = useState(fromCurrency);
   const [to, setTo] = useState(toCurrency);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [rate, setRate] = useState(0);
-  const [lastUpdate, setLastUpdate] = useState(new Date());
 
   useEffect(() => {
     const rateKey = `${from}-${to}`;

@@ -39,7 +39,7 @@ const documentTypes = {
   "shipping-docs": { icon: Package, label: "Shipping Documents", color: "teal" },
 };
 
-export function DocumentCenter({ vehicleId, documents }: DocumentCenterProps) {
+export function DocumentCenter({ documents }: DocumentCenterProps) {
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
   const filteredDocuments = selectedType

@@ -99,7 +99,6 @@ export function ImportTimeline({ startDate, estimatedDelivery }: ImportTimelineP
           <div className="space-y-8">
             {steps.map((step, index) => {
               const Icon = step.icon;
-              const isLast = index === steps.length - 1;
 
               return (
                 <motion.div

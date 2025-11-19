@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, CheckCircle2, Star, TrendingUp } from "lucide-react";
+import { CheckCircle2, Star, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface CustomerReviewsCounterProps {

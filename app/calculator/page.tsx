@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Calculator, DollarSign, Ship, Shield, Clock, CheckCircle2, X } from "lucide-react";
+import { Calculator, DollarSign, Ship, Shield, CheckCircle2, X } from "lucide-react";
 import { formatCurrency } from "@/lib/formatting";
 import { calculateCost } from "@/lib/calculator";
 import { ImportTimeline } from "@/components/calculator/import-timeline";
