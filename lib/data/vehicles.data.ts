@@ -46,7 +46,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "mint",
     jpPrice: 15200000,
     estimatedLandedCost: 152000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80",
     location: "Tokyo, Japan",
     features: ["V-Spec Package", "Original Paint", "Low Mileage", "Twin Turbo", "6-Speed Manual"],
     seller: {
@@ -68,7 +68,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 8900000,
     estimatedLandedCost: 89000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
     location: "Osaka, Japan",
     features: ["Twin Turbo", "6-Speed Manual", "Original Interior", "Factory Wheels"],
     seller: {
@@ -90,7 +90,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 7800000,
     estimatedLandedCost: 78000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80",
     location: "Yokohama, Japan",
     features: ["Type R Package", "Rotary Engine", "Original Wheels", "Sequential Twin Turbo"],
     seller: {
@@ -112,7 +112,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "mint",
     jpPrice: 12500000,
     estimatedLandedCost: 125000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
     location: "Tokyo, Japan",
     features: ["Type S Zero", "VTEC Engine", "Original Paint", "Low Mileage", "Carbon Fiber"],
     seller: {
@@ -134,7 +134,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "good",
     jpPrice: 4200000,
     estimatedLandedCost: 42000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=800&q=80",
     location: "Kobe, Japan",
     features: ["4WD", "Turbocharged", "Recaro Seats", "Factory Spoiler"],
     seller: {
@@ -156,7 +156,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 5500000,
     estimatedLandedCost: 55000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=800&q=80",
     location: "Sapporo, Japan",
     features: ["Type RA", "Boxer Engine", "4WD", "STI Badge", "Original Wheels"],
     seller: {
@@ -178,7 +178,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 3800000,
     estimatedLandedCost: 38000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=800&q=80",
     location: "Nagoya, Japan",
     features: ["Mid-Engine", "Turbocharged", "T-Top", "Original Paint"],
     seller: {
@@ -200,7 +200,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 4800000,
     estimatedLandedCost: 48000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=800&q=80",
     location: "Tokyo, Japan",
     features: ["Spec-R", "Turbocharged", "6-Speed Manual", "Factory Aero"],
     seller: {
@@ -222,7 +222,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "good",
     jpPrice: 3500000,
     estimatedLandedCost: 35000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
     location: "Osaka, Japan",
     features: ["Type R", "VTEC Engine", "Recaro Seats", "Original Wheels"],
     seller: {
@@ -244,7 +244,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "good",
     jpPrice: 3200000,
     estimatedLandedCost: 32000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=800&q=80",
     location: "Yokohama, Japan",
     features: ["1JZ-GTE", "Turbocharged", "4-Door Sedan", "Factory Aero"],
     seller: {
@@ -266,7 +266,7 @@ export const mockVehicles: VehicleSummary[] = [
     condition: "excellent",
     jpPrice: 2800000,
     estimatedLandedCost: 28000,
-    primaryImage: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800&q=80",
+    primaryImage: "https://images.unsplash.com/photo-1621135802920-133df287f89c?w=800&q=80",
     location: "Tokyo, Japan",
     features: ["Type X", "SR20DET", "Pop-up Headlights", "Original Paint"],
     seller: {
