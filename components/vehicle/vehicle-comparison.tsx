@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { X, Plus, Gauge, Calendar, DollarSign, Star } from "lucide-react";
+import { X, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { formatCurrency, formatNumber } from "@/lib/formatting";
 import type { VehicleSummary } from "@/lib/types";
@@ -31,6 +29,7 @@ export function VehicleComparison({
     { label: "Condition", key: "condition" as keyof VehicleSummary },
     { label: "JP Price", key: "jpPrice" as keyof VehicleSummary, format: (v: number) => `¥${(v / 1000000).toFixed(1)}M` },
     { label: "Landed Cost", key: "estimatedLandedCost" as keyof VehicleSummary, format: formatCurrency },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     { label: "Seller Rating", key: "seller" as keyof VehicleSummary, format: (v: any) => `${v.rating} ⭐` },
   ];
 

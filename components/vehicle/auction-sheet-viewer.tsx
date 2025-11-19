@@ -114,6 +114,7 @@ export function AuctionSheetViewer({
 
                 {/* Sheet Image */}
                 <div className="relative w-full h-[70vh] bg-gray-100 overflow-auto">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={
                       activeTab === "original"

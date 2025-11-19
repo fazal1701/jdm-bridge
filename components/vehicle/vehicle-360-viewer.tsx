@@ -29,7 +29,6 @@ export function Vehicle360Viewer({
 
   // Generate 360 sequence if we have multiple images
   const totalFrames = images.length;
-  const frameStep = 360 / totalFrames;
 
   useEffect(() => {
     if (isOpen) {

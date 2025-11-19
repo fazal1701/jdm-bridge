@@ -2,29 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Wrench,
   Zap,
   Palette,
   Settings,
   Star,
-  Clock,
   CheckCircle2,
   ArrowRight,
   Package,
   TrendingUp,
 } from "lucide-react";
-import { 
-  modificationShops, 
-  modificationPackages, 
-  bodyKits,
-  performanceParts,
-  modificationGallery 
+import {
+  modificationShops,
+  modificationPackages,
+  modificationGallery
 } from "@/lib/data";
 import { formatCurrency } from "@/lib/formatting";
 import { SiteFooter } from "@/components/layout/site-footer";

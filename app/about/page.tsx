@@ -579,7 +579,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-6 pt-6 border-t border-blue-200">
                   <p className="text-sm text-gray-700 text-center">
-                    Additional documents may be required: proof of income, proof of residence, valid driver's license, and insurance information.
+                    Additional documents may be required: proof of income, proof of residence, valid driver&apos;s license, and insurance information.
                   </p>
                 </div>
               </CardContent>

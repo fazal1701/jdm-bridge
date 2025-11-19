@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bell, Heart, X, CheckCircle2, AlertCircle, DollarSign } from "lucide-react";
+import { Bell, X, AlertCircle, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -124,12 +124,11 @@ export function WishlistAlerts({ alerts, onDismiss, onMarkRead }: WishlistAlerts
 }
 
 interface PriceAlertFormProps {
-  vehicleId: string;
   currentPrice: number;
   onSetAlert: (targetPrice: number) => void;
 }
 
-export function PriceAlertForm({ vehicleId, currentPrice, onSetAlert }: PriceAlertFormProps) {
+export function PriceAlertForm({ currentPrice, onSetAlert }: PriceAlertFormProps) {
   const [targetPrice, setTargetPrice] = useState(currentPrice * 0.9);
 
   return (
