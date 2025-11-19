@@ -22,6 +22,7 @@ const navItems = [
   { href: "/about", label: "ABOUT" },
   { href: "/marketplace", label: "STORE" },
   { href: "/auctions", label: "AUCTIONS" },
+  { href: "/modifications", label: "MODS" },
   { href: "/community", label: "COMMUNITY" },
   { href: "/agents", label: "AGENTS" },
   { href: "/service", label: "SERVICE" },

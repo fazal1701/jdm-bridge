@@ -7,5 +7,6 @@ export * from "./agents.data";
 export * from "./testimonials.data";
 export * from "./community-stories.data";
 export * from "./faqs.data";
+export * from "./modifications.data";
 
 

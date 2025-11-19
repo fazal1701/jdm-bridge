@@ -143,6 +143,60 @@ This document outlines all the mock images needed for each page to make the site
 ### Workshop Photos
 - **Facility images**: 6-8 workshop photos - 1200x800px
 
+## 🔧 Modifications Page (`/modifications`)
+
+### Partner Shop Logos & Photos
+- **Top Secret**: Logo (300x150px) + 3 shop photos (1200x800px)
+- **Rocket Bunny/Pandem**: Logo + 3 shop photos
+- **HKS**: Logo + 3 shop photos
+- **Varis**: Logo + 3 shop photos
+- **Liberty Walk**: Logo + 3 shop photos
+- **Additional shops**: 10+ more partner logos and photos
+
+### Body Kits
+- **Rocket Bunny V3**: 3-4 angles (800x600px each)
+- **Varis Arising II**: 3-4 angles
+- **Top Secret GT300**: 3-4 angles
+- **Liberty Walk**: 3-4 angles
+- **Individual pieces**: Front bumper, rear bumper, side skirts, fenders (600x600px each)
+
+### Modification Packages
+- **Stage 1 Performance**: Before/after dyno charts, installed parts - 800x600px
+- **Stage 2/3 Performance**: Engine bay photos, exhaust shots - 800x600px
+- **Suspension Package**: Coilovers installed, alignment work - 800x600px
+- **Interior Package**: Recaro seats, steering wheel, shift knob - 800x600px
+- **Carbon Fiber Aero**: Hood, wing, diffuser, splitters - 800x600px
+
+### Before/After Gallery
+- **15-20 Complete Builds**: Each needs:
+  - Before photo: 1200x800px
+  - After photo: 1200x800px
+  - Detail shots: 6-8 images (800x600px)
+  - Process photos: 4-6 images showing work in progress
+  - Engine bay: Before/after
+  - Interior: Before/after
+  - Wheels/stance: Before/after
+
+### Performance Parts
+- **Turbo kits**: HKS, Garrett, BorgWarner - 600x600px
+- **Exhaust systems**: Tomei, HKS, Amuse - 800x600px
+- **Suspension**: Coilovers, sway bars, arms - 600x600px
+- **Brakes**: Brembo, Endless, AP Racing - 600x600px
+- **Wheels**: Volk, Work, Rays - 600x600px (multiple angles)
+
+### Installation Process
+- **Step-by-step photos**:
+  - Body kit installation: 8-10 steps
+  - Turbo installation: 8-10 steps
+  - Suspension install: 6-8 steps
+  - Interior upgrade: 6-8 steps
+
+### Shop Facilities
+- **Workshop interiors**: Lifts, tools, work bays - 1200x800px
+- **Paint booths**: Professional painting facilities - 1200x800px
+- **Dyno rooms**: Cars on dyno - 1200x800px
+- **Showroom**: Completed builds on display - 1200x800px
+
 ## 📱 General UI Elements
 
 ### Icons & Graphics
@@ -177,18 +231,24 @@ Example: marketplace-hero-skyline-gtr-1920x1080.webp
 2. Featured inventory (6-8 vehicles with full galleries)
 3. Agent profile photos (10-15 agents)
 4. Trust section customer photos (4-6)
+5. **Modifications page partner shop logos (5 shops)**
+6. **Modifications gallery before/after (5-10 builds)**
 
 ### Phase 2 (Important - Next Week)
-5. Marketplace listings (20-30 vehicles)
-6. Auction sheets (10-15 scans)
-7. Community testimonials (10-15)
-8. Shipping process photos (6-8)
+7. Marketplace listings (20-30 vehicles)
+8. Auction sheets (10-15 scans)
+9. Community testimonials (10-15)
+10. Shipping process photos (6-8)
+11. **Body kit product photos (10-15 kits)**
+12. **Performance parts catalog (20-30 parts)**
 
 ### Phase 3 (Nice to Have - Future)
-9. Team/about page photos
-10. Service page workshop images
-11. Additional community gallery
-12. Custom illustrations and icons
+13. Team/about page photos
+14. Service page workshop images
+15. Additional community gallery
+16. Custom illustrations and icons
+17. **Modification shop facility photos**
+18. **Installation process step-by-step guides**
 
 ## 🔗 Image Sources
 
