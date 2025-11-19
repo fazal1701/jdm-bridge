@@ -1,4 +1,4 @@
-import type { LanguageCode } from "./types";
+import type { LanguageCode } from "./types/agent.types";
 
 export function formatCurrency(
   amount: number,

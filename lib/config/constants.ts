@@ -1,3 +1,5 @@
+// Configuration constants
+
 export const MAKES = [
   "Nissan",
   "Toyota",
@@ -60,6 +62,10 @@ export const TRANSMISSION_OPTIONS = [
   { value: "cvt", label: "CVT" },
 ] as const;
 
+export const TRANSMISSIONS = ["Manual", "Automatic"] as const;
+export const DRIVETRAIN = ["RWD", "FWD", "AWD", "4WD"] as const;
+export const CONDITIONS = ["Excellent", "Good", "Fair", "Project"] as const;
+
 export const FEATURED_MODELS = [
   "Nissan Skyline GT-R",
   "Toyota Supra",
@@ -100,4 +106,10 @@ export const DESTINATIONS = {
     { value: "canada-qc", label: "Quebec" },
   ],
 } as const;
+
+export const DESTINATIONS_LIST = [
+  { code: "usa", name: "United States", flag: "🇺🇸" },
+  { code: "can", name: "Canada", flag: "🇨🇦" },
+] as const;
+
 

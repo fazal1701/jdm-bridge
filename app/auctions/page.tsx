@@ -22,7 +22,7 @@ import {
   MapPin,
   Gauge,
 } from "lucide-react";
-import { mockAuctions } from "@/lib/mock-data-auctions";
+import { mockAuctions } from "@/lib/data";
 import { formatCurrency } from "@/lib/formatting";
 
 type FilterType = "all" | "ending_soon" | "no_reserve" | "hot";

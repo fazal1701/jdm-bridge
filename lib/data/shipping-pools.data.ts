@@ -1,4 +1,6 @@
-import type { ShippingPool } from "./types";
+// Shipping pools mock data
+
+import type { ShippingPool } from "@/lib/types/shipping.types";
 
 export const mockShippingPools: ShippingPool[] = [
   {
@@ -86,4 +88,5 @@ export const mockShippingPools: ShippingPool[] = [
     },
   },
 ];
+
 

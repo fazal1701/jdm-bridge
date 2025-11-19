@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { UserProvider } from "@/contexts/user-context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,7 +23,6 @@ export default function RootLayout({
         <UserProvider>
           <SiteHeader />
           <main className="min-h-screen">{children}</main>
-          <SiteFooter />
         </UserProvider>
       </body>
     </html>

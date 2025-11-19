@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
 import { formatCurrency, formatNumber } from "@/lib/formatting";
-import { mockVehicles } from "@/lib/mock-data";
+import { mockVehicles } from "@/lib/data";
 
 export function FeaturedInventorySection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,13 +21,13 @@ export function FeaturedInventorySection() {
   }, []);
 
   return (
-    <section className="py-24 bg-black">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
             Featured Vehicles This Week
           </h2>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600">
             Handpicked inventory, verified by our community
           </p>
         </div>
@@ -43,9 +43,9 @@ export function FeaturedInventorySection() {
               }`}
               onClick={() => setActiveIndex(index)}
             >
-              <Card className="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-800 group-hover:border-red-600 transition-all overflow-hidden">
+              <Card className="border-2 border-gray-200 hover:border-blue-500 transition-all overflow-hidden bg-white">
                 {/* Image Container */}
-                <div className="relative h-48 md:h-64 overflow-hidden bg-gray-800">
+                <div className="relative h-48 md:h-64 overflow-hidden bg-gray-100">
                   <Image
                     src={vehicle.primaryImage}
                     alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
@@ -53,10 +53,10 @@ export function FeaturedInventorySection() {
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 flex gap-2">
-                    <Badge variant="success" className="bg-green-600/90">
+                    <Badge variant="success" className="bg-green-600">
                       {vehicle.condition}
                     </Badge>
-                    <button className="p-2 bg-white/20 hover:bg-red-600 text-white rounded-lg transition-all">
+                    <button className="p-2 bg-white/90 hover:bg-blue-600 text-gray-900 hover:text-white rounded-lg transition-all">
                       <Heart className="w-5 h-5" />
                     </button>
                   </div>
@@ -64,26 +64,26 @@ export function FeaturedInventorySection() {
 
                 {/* Content */}
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {vehicle.year} {vehicle.make} {vehicle.model}
                   </h3>
 
-                  <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                     <span>{formatNumber(vehicle.mileage)} km</span>
                     <span>•</span>
                     <span>Manual</span>
                   </div>
 
-                  <div className="space-y-2 border-t border-gray-800 pt-4">
+                  <div className="space-y-2 border-t border-gray-200 pt-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-400">JP Price</span>
-                      <span className="text-white font-semibold">
+                      <span className="text-gray-600">JP Price</span>
+                      <span className="text-gray-900 font-semibold">
                         ¥{(vehicle.jpPrice / 1000000).toFixed(1)}M
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">Est. Landed</span>
-                      <span className="text-2xl font-black bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                      <span className="text-gray-600">Est. Landed</span>
+                      <span className="text-2xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                         {formatCurrency(vehicle.estimatedLandedCost)}
                       </span>
                     </div>
@@ -91,19 +91,19 @@ export function FeaturedInventorySection() {
 
                   <div className="mt-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gray-700" />
+                      <div className="w-8 h-8 rounded-full bg-gray-200" />
                       <div className="text-sm">
-                        <p className="text-white font-semibold">
+                        <p className="text-gray-900 font-semibold">
                           {vehicle.seller.name}
                         </p>
-                        <p className="text-gray-400">
+                        <p className="text-gray-600">
                           ⭐ {vehicle.seller.rating} ({vehicle.seller.reviewCount})
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <Button className="w-full mt-4 bg-red-600 hover:bg-red-700">
+                  <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
                     View Details
                   </Button>
                 </CardContent>
@@ -120,8 +120,8 @@ export function FeaturedInventorySection() {
               onClick={() => setActiveIndex(index)}
               className={`h-2 rounded-full transition-all ${
                 index === activeIndex
-                  ? "w-8 bg-red-600"
-                  : "w-2 bg-gray-700 hover:bg-gray-600"
+                  ? "w-8 bg-blue-600"
+                  : "w-2 bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

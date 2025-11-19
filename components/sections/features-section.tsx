@@ -51,13 +51,13 @@ const features: Feature[] = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-950 to-gray-900">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
             Why We&apos;re Different
           </h2>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600">
             We combined the best of every competitor and made it better
           </p>
         </div>
@@ -72,17 +72,17 @@ export function FeaturesSection() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Card className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-gray-600 transition-all h-full">
+              <Card className="border-2 border-gray-200 hover:border-blue-500 transition-all h-full bg-white">
                 <CardContent className="p-8">
                   <div
-                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}
+                    className={`w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}
                   >
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <p className="text-gray-600">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

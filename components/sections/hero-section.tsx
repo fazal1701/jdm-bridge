@@ -1,151 +1,147 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Search, TrendingUp } from "lucide-react";
+import { CountdownTimer } from "@/components/ui/countdown-timer";
 
 export function HeroSection() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video/Image with Overlay */}
+      {/* Background Image with Next.js Image Optimization */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full object-cover bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=1920&q=80)",
-          }}
+        <Image
+          src="/JDM-Bridge.jpg"
+          alt="JDM Bridge - Japanese Domestic Market Cars"
+          fill
+          priority
+          quality={85}
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Dark Overlay for Better Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        {/* Subtle Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-transparent to-red-900/20" />
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-        <motion.h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-tight"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-        >
-          Your Dream JDM
-          <br />
-          <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            Delivered
-          </span>
-        </motion.h1>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="text-center">
+          {/* Main Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-6"
+          >
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
+              Your Dream{" "}
+              <span className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent">
+                JDM
+              </span>
+              <br />
+              Awaits
+            </h1>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 max-w-3xl mx-auto font-medium">
+              Import authentic Japanese cars directly from verified dealers.
+              <br className="hidden sm:block" />
+              <span className="text-blue-300">Transparent pricing. Trusted sellers. Real-time tracking.</span>
+            </p>
+          </motion.div>
 
-        <motion.p
-          className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          Authentic imports. Verified sellers. Live prices. Import anything,
-          anywhere, with confidence.
-        </motion.p>
+          {/* Countdown Timer - Limited Time Offer */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+            className="mb-6"
+          >
+            <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 md:p-6 inline-block border border-white/20">
+              <p className="text-white font-bold text-sm md:text-base mb-2">
+                🎉 Holiday Love Celebration - Limited Time Offers
+              </p>
+              <CountdownTimer
+                targetDate={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)} // 30 days from now
+                size="sm"
+                showLabels={false}
+              />
+            </div>
+          </motion.div>
 
-        {/* Search Component */}
-        <motion.div
-          className="bg-white/10 backdrop-blur-md rounded-xl p-6 mb-8 border border-white/20"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Select>
-              <SelectTrigger className="bg-white/20 text-white border-white/30">
-                <SelectValue placeholder="Make" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="nissan">Nissan</SelectItem>
-                <SelectItem value="toyota">Toyota</SelectItem>
-                <SelectItem value="honda">Honda</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="bg-white/20 text-white border-white/30">
-                <SelectValue placeholder="Model" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="skyline">Skyline</SelectItem>
-                <SelectItem value="supra">Supra</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="bg-white/20 text-white border-white/30">
-                <SelectValue placeholder="Year" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="2023">2023</SelectItem>
-                <SelectItem value="2022">2022</SelectItem>
-              </SelectContent>
-            </Select>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+          >
             <Button
-              className="bg-blue-600 hover:bg-blue-700 col-span-2 md:col-span-1"
+              size="lg"
+              className="px-8 py-6 text-lg font-bold bg-red-600 hover:bg-red-700 text-white shadow-2xl hover:shadow-red-500/50 transition-all"
               asChild
             >
-              <Link href="/browse-sellers">Search</Link>
+              <Link href="/marketplace">
+                Browse Inventory
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
             </Button>
-          </div>
-          <p className="text-sm text-gray-400 mt-3">
-            📊 45,000+ buyers | 1,200+ dealers | $500M+ imported
-          </p>
-        </motion.div>
+            <Button
+              size="lg"
+              variant="outline"
+              className="px-8 py-6 text-lg font-bold bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 backdrop-blur-sm"
+              asChild
+            >
+              <Link href="/how-it-works">
+                <Search className="mr-2 w-5 h-5" />
+                How It Works
+              </Link>
+            </Button>
+          </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex gap-4 justify-center flex-wrap"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <Button
-            size="lg"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-lg shadow-lg"
-            asChild
+          {/* Trust Indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap justify-center items-center gap-6 text-sm sm:text-base text-gray-300"
           >
-            <Link href="/browse-sellers">Browse Inventory</Link>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="px-8 py-4 bg-white/20 hover:bg-white/30 text-white border-white/30 text-lg"
-            asChild
-          >
-            <Link href="/how-it-works">How It Works</Link>
-          </Button>
-        </motion.div>
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-green-400" />
+              <span className="font-semibold">45K+ Buyers</span>
+            </div>
+            <div className="hidden sm:block w-1 h-1 bg-gray-500 rounded-full" />
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">1.2K+ Verified Dealers</span>
+            </div>
+            <div className="hidden sm:block w-1 h-1 bg-gray-500 rounded-full" />
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">$500M+ Imported</span>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
       <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.6 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
       >
-        <div className="text-white text-center">
-          <p className="text-sm mb-2">Scroll to explore</p>
-          <svg
-            className="w-6 h-6 mx-auto"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </div>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+        >
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1 h-3 bg-white/70 rounded-full mt-2"
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

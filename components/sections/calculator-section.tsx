@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { formatCurrency } from "@/lib/formatting";
-import type { CostBreakdown } from "@/lib/types";
+import type { CostBreakdown } from "@/lib/types/order.types";
 
 export function CalculatorSection() {
   const [make, setMake] = useState("nissan");
@@ -64,37 +64,32 @@ export function CalculatorSection() {
   const breakdown = calculate();
 
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-950 to-black relative overflow-hidden">
-      {/* Background Effect */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 right-0 w-96 h-96 bg-red-600 rounded-full filter blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
             What Will Your Import Cost?
           </h2>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-gray-600">
             Interactive calculator with real pricing
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Input Section */}
-          <Card className="bg-white/5 backdrop-blur border border-white/10">
+          <Card className="border-2 border-gray-200 hover:border-blue-500 transition-all">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-white">
+              <CardTitle className="text-2xl font-bold text-gray-900">
                 Vehicle Selection
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Make
                 </label>
                 <Select value={make} onValueChange={setMake}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                  <SelectTrigger className="bg-white border-gray-300 text-gray-900">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -105,11 +100,11 @@ export function CalculatorSection() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Model
                 </label>
                 <Select value={model} onValueChange={setModel}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                  <SelectTrigger className="bg-white border-gray-300 text-gray-900">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -120,7 +115,7 @@ export function CalculatorSection() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Year
                 </label>
                 <Input
@@ -129,16 +124,16 @@ export function CalculatorSection() {
                   max="2024"
                   value={year}
                   onChange={(e) => setYear(parseInt(e.target.value) || 2023)}
-                  className="bg-white/10 border-white/20 text-white"
+                  className="bg-white border-gray-300 text-gray-900"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Destination
                 </label>
                 <Select value={destination} onValueChange={setDestination}>
-                  <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                  <SelectTrigger className="bg-white border-gray-300 text-gray-900">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -152,7 +147,7 @@ export function CalculatorSection() {
                 </Select>
               </div>
 
-              <Button className="w-full mt-6 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800">
+              <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">
                 Calculate Now
               </Button>
             </CardContent>
@@ -164,78 +159,78 @@ export function CalculatorSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-gradient-to-br from-red-600/10 to-red-900/10 backdrop-blur border border-red-600/30">
+            <Card className="border-2 border-blue-200 bg-blue-50">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-white">
+                <CardTitle className="text-2xl font-bold text-gray-900">
                   Cost Breakdown
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3 mb-6">
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Vehicle Cost</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(breakdown.vehicleCost)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Import Fees</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(Math.round(breakdown.japanExportFee))}
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Shipping (Pool)</span>
-                    <span className="text-green-400 font-semibold">
+                    <span className="text-green-600 font-semibold">
                       {formatCurrency(breakdown.shipping)}{" "}
                       <span className="text-xs">(-$5,300!)</span>
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Customs & Brokerage</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(breakdown.customsBrokerage)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Import Duty (12%)</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(Math.round(breakdown.importDuty))}
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Registration</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(breakdown.registration)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-gray-300">
+                  <div className="flex justify-between text-gray-700">
                     <span>Taxes & Misc</span>
-                    <span className="text-white font-semibold">
+                    <span className="text-gray-900 font-semibold">
                       {formatCurrency(Math.round(breakdown.taxes))}
                     </span>
                   </div>
 
-                  <div className="border-t border-white/20 pt-3 mt-3 flex justify-between">
-                    <span className="text-lg font-bold text-white">
+                  <div className="border-t border-blue-200 pt-3 mt-3 flex justify-between">
+                    <span className="text-lg font-bold text-gray-900">
                       Total Landed Cost
                     </span>
-                    <span className="text-3xl font-black bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                    <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                       {formatCurrency(Math.round(breakdown.total))}
                     </span>
                   </div>
 
                   {breakdown.savingsVsLocal && (
-                    <div className="bg-green-600/20 border border-green-600/50 rounded-lg p-3 mt-4">
-                      <p className="text-green-400 font-semibold">
+                    <div className="bg-green-100 border border-green-300 rounded-lg p-3 mt-4">
+                      <p className="text-green-700 font-semibold">
                         💰 Your Savings: {formatCurrency(breakdown.savingsVsLocal)}
                       </p>
-                      <p className="text-sm text-green-300">vs. buying locally</p>
+                      <p className="text-sm text-green-600">vs. buying locally</p>
                     </div>
                   )}
                 </div>
 
-                <Button className="w-full bg-red-600 hover:bg-red-700">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">
                   Join This Pool
                 </Button>
               </CardContent>

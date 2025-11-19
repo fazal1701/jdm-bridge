@@ -1,4 +1,4 @@
-import type { CostBreakdown } from "./types";
+import type { CostBreakdown } from "./types/order.types";
 
 interface CalculatorInputs {
   vehiclePrice: number;

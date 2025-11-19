@@ -13,7 +13,7 @@ import {
   DollarSign,
 } from "lucide-react";
 import { useUser } from "@/contexts/user-context";
-import { mockVehicles } from "@/lib/mock-data";
+import { mockVehicles } from "@/lib/data";
 import { formatCurrency } from "@/lib/formatting";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

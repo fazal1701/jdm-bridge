@@ -1,4 +1,4 @@
-import type { VehicleSummary } from "./types";
+import type { VehicleSummary } from "./types/vehicle.types";
 
 interface FilterParams {
   make?: string | null;

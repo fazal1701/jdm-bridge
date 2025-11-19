@@ -15,6 +15,8 @@ import {
   Share2,
 } from "lucide-react";
 import { formatCurrency } from "@/lib/formatting";
+import { mockCommunityStories, mockTestimonials } from "@/lib/data";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 type CategoryType = "all" | "success" | "questions" | "market" | "technical" | "shipping";
 
@@ -205,8 +207,103 @@ export default function CommunityPage() {
               </CardContent>
             </Card>
 
+            {/* Community Stories Section */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-black text-gray-900 mb-4">Featured Success Stories</h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                {mockCommunityStories.map((story, index) => (
+                  <motion.div
+                    key={story.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="border-2 border-gray-200 hover:border-blue-500 transition-all h-full">
+                      <CardContent className="p-6">
+                        <div className="mb-4">
+                          <h3 className="text-lg font-bold text-gray-900 mb-2">{story.vehicle}</h3>
+                          <p className="text-gray-700 italic mb-3">&quot;{story.quote}&quot;</p>
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                              {story.author.name.charAt(0)}
+                            </div>
+                            <div>
+                              <div className="font-semibold text-gray-900 text-sm">{story.author.name}</div>
+                              <div className="text-xs text-gray-600">{story.author.location}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-sm text-gray-600 pt-4 border-t border-gray-200">
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1">
+                              <Eye className="w-4 h-4" />
+                              <span>{story.views}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Heart className="w-4 h-4" />
+                              <span>{story.likes}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <MessageSquare className="w-4 h-4" />
+                              <span>{story.comments}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="mt-3 pt-3 border-t border-gray-200">
+                          <div className="text-xs text-gray-600">Imported Cost</div>
+                          <div className="text-lg font-bold text-blue-600">{formatCurrency(story.importedCost)}</div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Testimonials Section */}
+            <div className="mb-8">
+              <h2 className="text-2xl font-black text-gray-900 mb-4">Customer Testimonials</h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                {mockTestimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="border-2 border-gray-200 hover:border-blue-500 transition-all h-full">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-1 mb-3">
+                          {Array.from({ length: testimonial.rating }).map((_, i) => (
+                            <span key={i} className="text-yellow-400">★</span>
+                          ))}
+                        </div>
+                        <p className="text-gray-700 mb-4 italic">&quot;{testimonial.quote}&quot;</p>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                            {testimonial.name.charAt(0)}
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900 text-sm">{testimonial.name}</div>
+                            <div className="text-xs text-gray-600">{testimonial.location}</div>
+                            <div className="text-xs text-gray-600 mt-1">{testimonial.vehicle}</div>
+                          </div>
+                          {testimonial.verified && (
+                            <CheckCircle2 className="w-4 h-4 text-blue-600 ml-auto" />
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
             {/* Posts Feed */}
             <div className="space-y-6">
+              <h2 className="text-2xl font-black text-gray-900 mb-4">Community Posts</h2>
               {filteredPosts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -304,6 +401,7 @@ export default function CommunityPage() {
           </div>
         </div>
       </div>
+      <SiteFooter />
     </div>
   );
 }

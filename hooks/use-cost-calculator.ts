@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { calculateCost } from "@/lib/calculator";
-import type { CostBreakdown } from "@/lib/types";
+import type { CostBreakdown } from "@/lib/types/order.types";
 
 interface UseCostCalculatorInputs {
   vehiclePrice: number;

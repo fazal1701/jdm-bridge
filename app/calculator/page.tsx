@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Calculator, DollarSign, Ship, Shield, Clock, CheckCircle2, X } from "lucide-react";
 import { formatCurrency } from "@/lib/formatting";
 import { calculateCost } from "@/lib/calculator";
+import { ImportTimeline } from "@/components/calculator/import-timeline";
+import { CurrencyConverter } from "@/components/ui/currency-converter";
 
 export default function CalculatorPage() {
   const [vehiclePrice, setVehiclePrice] = useState(50000);
@@ -311,37 +313,29 @@ export default function CalculatorPage() {
                 </Card>
               </motion.div>
 
-              {/* Timeline */}
+              {/* Enhanced Timeline */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <Card className="border-2 border-gray-200 shadow-lg">
-                  <CardHeader className="flex flex-row items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <CardTitle className="text-lg font-bold">Timeline</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Complete import process typically takes 8-12 weeks from purchase to delivery,
-                      depending on shipping schedule and customs processing.
-                    </p>
-                    <div className="space-y-2 text-sm">
-                      <div>
-                        <span className="font-semibold">Purchase to Ship:</span> 2-4 weeks
-                      </div>
-                      <div>
-                        <span className="font-semibold">Ocean Transit:</span> 3-4 weeks
-                      </div>
-                      <div>
-                        <span className="font-semibold">Customs & Delivery:</span> 2-3 weeks
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <ImportTimeline
+                  startDate={new Date()}
+                  estimatedDelivery={new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000)}
+                />
+              </motion.div>
+
+              {/* Currency Converter */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <CurrencyConverter
+                  initialAmount={vehiclePrice}
+                  fromCurrency="USD"
+                  toCurrency="JPY"
+                />
               </motion.div>
             </div>
           </div>

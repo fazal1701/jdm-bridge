@@ -15,7 +15,6 @@ import {
   CheckCircle2,
   Eye,
   EyeOff,
-  Github,
 } from "lucide-react";
 import { useUser } from "@/contexts/user-context";
 import { useRouter } from "next/navigation";
@@ -186,25 +185,6 @@ export default function SignInPage() {
                         <ArrowRight className="ml-2 w-5 h-5" />
                       </Button>
 
-                      <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                          <div className="w-full border-t border-gray-300" />
-                        </div>
-                        <div className="relative flex justify-center text-sm">
-                          <span className="px-2 bg-white text-gray-500">
-                            Or continue with
-                          </span>
-                        </div>
-                      </div>
-
-                      <Button
-                        variant="outline"
-                        className="w-full h-12 border-2 border-gray-300 hover:border-blue-500"
-                        type="button"
-                      >
-                        <Github className="w-5 h-5 mr-2" />
-                        Sign in with GitHub
-                      </Button>
                     </form>
 
                     <div className="mt-6 pt-6 border-t border-gray-200">

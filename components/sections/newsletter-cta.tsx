@@ -41,7 +41,7 @@ export function NewsletterCTA() {
       </motion.div>
 
       {/* Footer CTA */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-24 mb-16">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 mb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
             Ready to Find Your Dream Car?
@@ -56,7 +56,7 @@ export function NewsletterCTA() {
               className="px-8 py-4 bg-white text-blue-600 hover:bg-gray-100 text-lg shadow-lg"
               asChild
             >
-              <Link href="/browse-sellers">Browse Inventory Now</Link>
+              <Link href="/marketplace">Browse Inventory Now</Link>
             </Button>
             <Button
               size="lg"
@@ -64,7 +64,7 @@ export function NewsletterCTA() {
               className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border-white/30 text-lg"
               asChild
             >
-              <Link href="/browse-sellers">For Sellers</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>

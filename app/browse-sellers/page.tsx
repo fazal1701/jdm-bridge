@@ -183,7 +183,7 @@ export default function BrowseSellersPage() {
                       placeholder="Search sellers by name or location..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 h-14 border-2 border-gray-200 focus:border-blue-500 text-lg"
+                      className="pl-12 h-14 border-2 border-gray-200 focus:border-blue-500 text-lg text-black placeholder:text-gray-400 bg-white"
                     />
                   </div>
                   <Button

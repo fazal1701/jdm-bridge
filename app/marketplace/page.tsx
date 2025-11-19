@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,17 +17,30 @@ import {
   Star,
   Gauge,
 } from "lucide-react";
-import { mockVehicles } from "@/lib/mock-data";
+import { mockVehicles, financingOptions, fullVehicleDetails } from "@/lib/data";
 import { useUser } from "@/contexts/user-context";
 import { formatCurrency, formatNumber } from "@/lib/formatting";
+import { calculateMonthlyPayment } from "@/lib/utils/financing";
 import type { VehicleCondition } from "@/lib/types";
+import { Vehicle360Viewer } from "@/components/vehicle/vehicle-360-viewer";
 
-export default function MarketplacePage() {
+function MarketplaceContent() {
+  const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMake, setSelectedMake] = useState<string | null>(null);
   const [selectedCondition] = useState<VehicleCondition | null>(null);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [selectedVehicleId, setSelectedVehicleId] = useState<string | null>(null);
   // Note: Condition filter setter will be added when condition filter UI is implemented
-  const { addToFavorites, removeFromFavorites, addToCart, isFavorite, isInCart } = useUser();
+  const { addToFavorites, removeFromFavorites, addToCart, removeFromCart, isFavorite, isInCart } = useUser();
+
+  // Handle search query parameter from URL
+  useEffect(() => {
+    const searchQuery = searchParams.get("search");
+    if (searchQuery) {
+      setSearchTerm(searchQuery);
+    }
+  }, [searchParams]);
 
   const makes = Array.from(new Set(mockVehicles.map((v) => v.make)));
 
@@ -63,7 +77,7 @@ export default function MarketplacePage() {
                 placeholder="Search by make, model, or year..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-12 border-2 border-gray-200 focus:border-blue-500"
+                className="pl-12 h-12 border-2 border-gray-200 focus:border-blue-500 text-black placeholder:text-gray-400 bg-white"
               />
             </div>
             <Button className="bg-blue-600 hover:bg-blue-700 px-8">
@@ -117,7 +131,13 @@ export default function MarketplacePage() {
                 transition={{ delay: index * 0.05 }}
               >
                 <Card className="h-full border-2 border-gray-200 hover:border-blue-500 transition-all shadow-lg hover:shadow-2xl overflow-hidden group">
-                  <div className="relative h-48 overflow-hidden bg-gray-100">
+                  <div 
+                    className="relative h-48 overflow-hidden bg-gray-100 cursor-pointer"
+                    onClick={() => {
+                      setSelectedVehicleId(vehicle.id);
+                      setViewerOpen(true);
+                    }}
+                  >
                     <Image
                       src={vehicle.primaryImage || "/placeholder-car.jpg"}
                       alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
@@ -127,6 +147,11 @@ export default function MarketplacePage() {
                         e.currentTarget.src = "/placeholder-car.jpg";
                       }}
                     />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-semibold text-gray-900">
+                        Click for 360° View
+                      </div>
+                    </div>
                     <div className="absolute top-4 right-4 flex gap-2">
                       <button
                         onClick={() =>
@@ -194,6 +219,31 @@ export default function MarketplacePage() {
                           {formatCurrency(vehicle.estimatedLandedCost)}
                         </span>
                       </div>
+                      {/* Financing Information */}
+                      {(() => {
+                        const standardFinancing = financingOptions[0]; // Standard Financing
+                        const downPayment = vehicle.estimatedLandedCost * (standardFinancing.minDownPaymentPercent / 100);
+                        const financing = calculateMonthlyPayment({
+                          vehiclePrice: vehicle.estimatedLandedCost,
+                          downPayment,
+                          apr: standardFinancing.apr,
+                          termMonths: standardFinancing.termMonths,
+                        });
+                        return (
+                          <div className="mt-3 pt-3 border-t border-gray-100 bg-blue-50 rounded-lg p-3">
+                            <div className="text-xs text-gray-600 mb-1">Financing Available</div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-xs text-gray-700">Est. Monthly Payment</span>
+                              <span className="text-lg font-bold text-blue-700">
+                                {formatCurrency(financing.payment)}
+                              </span>
+                            </div>
+                            <div className="text-xs text-gray-500 mt-1">
+                              {standardFinancing.apr}% APR • {standardFinancing.termMonths} months • {standardFinancing.minDownPaymentPercent}% down
+                            </div>
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     <div className="flex gap-2">
@@ -212,10 +262,9 @@ export default function MarketplacePage() {
                         }`}
                         onClick={() =>
                           isInCart(vehicle.id)
-                            ? null
+                            ? removeFromCart(vehicle.id)
                             : addToCart(vehicle.id)
                         }
-                        disabled={isInCart(vehicle.id)}
                       >
                         <ShoppingCart className="w-4 h-4" />
                       </Button>
@@ -227,7 +276,31 @@ export default function MarketplacePage() {
           </div>
         </div>
       </section>
+
+      {/* 360° Viewer */}
+      {selectedVehicleId && fullVehicleDetails[selectedVehicleId] && (
+        <Vehicle360Viewer
+          images={fullVehicleDetails[selectedVehicleId].images || []}
+          isOpen={viewerOpen}
+          onClose={() => {
+            setViewerOpen(false);
+            setSelectedVehicleId(null);
+          }}
+        />
+      )}
     </div>
+  );
+}
+
+export default function MarketplacePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-24 flex items-center justify-center">
+        <p className="text-gray-600">Loading...</p>
+      </div>
+    }>
+      <MarketplaceContent />
+    </Suspense>
   );
 }
 

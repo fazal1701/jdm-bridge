@@ -21,7 +21,7 @@ import {
   Package,
   CheckCircle2,
 } from "lucide-react";
-import { mockShippingPools } from "@/lib/mock-data-pools";
+import { mockShippingPools } from "@/lib/data";
 import { formatCurrency } from "@/lib/formatting";
 
 type TabType = "active" | "routes" | "calculator";

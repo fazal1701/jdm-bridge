@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { mockFAQs } from "@/lib/mock-data";
+import { mockFAQs } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export function FAQSection() {
@@ -35,7 +35,7 @@ export function FAQSection() {
             placeholder="Search FAQ..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white/10 border-white/20 text-white placeholder:text-gray-500"
+            className="w-full bg-white border-gray-300 text-black placeholder:text-gray-400"
           />
         </div>
 
